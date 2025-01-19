@@ -3,15 +3,15 @@ from typing import Dict
 
 def simple_hash(text: str) -> str:
     """
-    Given a text return it produces a 120-bit (15-byte) hash value represented
+    Given a text it returns a 120-bit (15-byte) hash value represented
     as 30-character hexadecimal number. It is based on polynomial rolling hash
     function but adapted to output 30 characters fixed-length.
 
     Data collision probability: 1/2**120
-    Time complexity: O(n) wher n in the lenght of text
+    Time complexity: O(n) where n in the length of text
     """
-    # p: prime
     # m: prime greather than 2**120 to reduce probability of data collision
+    # p: arbitrary prime different than m
     p, m = 2**90 + 133, 2**120 + 451
     p_pow = 1
     p_pow = 1
@@ -27,9 +27,9 @@ def simple_hash(text: str) -> str:
 
 def validate_fragments(fragments: Dict):
     """
-    Raises and exception if fragments doesn't pass validation
+    Raises an exception if fragments doesn't pass validation
 
-    It checks:
+    It checks
         - missing fragments
         - `data` and `hash` attributes exists for all fragments
     """
