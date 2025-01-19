@@ -5,7 +5,7 @@ from decimal import Decimal
 
 def get_max_fragments(risk_to_log: float, risk_factor_to_log: float):
     """
-    Given a `risk` and `risk_factor` in log form return
+    Given a `risk` and `risk_factor` in logaritmic form, it returns
     the max number of fragments that can be formed
     """
     return risk_to_log // risk_factor_to_log
@@ -15,8 +15,8 @@ def can_distribute_log(
     data_centers_to_log: List, fragments: int, max_risk_to_log: float
 ):
     """
-    Given a `max_risk_to_log`, it returns `True` if all fragments can be distributed
-    across all `data_centers`. Otherwise, return `False`
+    Given a `max_risk` in logaritmic form, it returns `True` if all fragments
+    can be distributed across all `data_centers`. Otherwise, it returns `False`
     """
     total_fragments_needed = 0
     for risk_factor_to_log in data_centers_to_log:
@@ -34,7 +34,8 @@ def binary_search_min(
     tolerance: float = 1e-6,
 ):
     """
-    Perform binary search to find the minimum value that satisfies the condition function.
+    It returns the minimum value that satisfies the condition function using
+    binary search between the `lowe_bound` and the `upper_bound`.
     """
     result = upper_bound
     while upper_bound - lower_bound > tolerance:
@@ -49,7 +50,7 @@ def binary_search_min(
 
 def distribute_fragments(data_centers: List, fragments: int):
     """
-    Returns the minimized maximum risk achievable through optimal
+    It returns the minimized maximum risk achievable through optimal
     distribution of the data fragments across the data centers.
 
     Time complexity: O(log(D/tolerance))
