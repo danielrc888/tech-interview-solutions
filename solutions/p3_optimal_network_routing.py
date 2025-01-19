@@ -60,6 +60,10 @@ def find_minimum_latency_path(
     source: str,
     target: str,
 ):
+    """
+    It returns the minimun latency path in a graph using a modified dijkstra
+    algorithm. If no path is found it raises an error.
+    """
     compression_nodes_set = set(compression_nodes)
     min_total_latency = dijkstra_with_halving(
         graph,
